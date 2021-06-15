@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
+import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
 import 'package:provider/provider.dart';
 
 import './screens/home_screen.dart';
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: HomeScreen(),
+        routes: {
+          MovieDetailsScreen.routeName: (ctx) => MovieDetailsScreen(),
+        },
       ),
     );
   }

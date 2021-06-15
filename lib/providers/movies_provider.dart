@@ -31,4 +31,23 @@ class Movies with ChangeNotifier {
       print(error);
     }
   }
+
+  Future<Movie> fetchMovieDetails(int id) async {
+    final url = Uri.parse(
+        'https://api.themoviedb.org/3/movie/$id?api_key=f1a036ef23dc9704fb60a521327ff1c7&language=en-US');
+    try {
+      final response = await http.get(url);
+      if (response.statusCode != 200) {
+        print("Error, failed to load movie details");
+        throw "Error";
+      }
+      final jsonString = response.body;
+      var jsonMap = json.decode(jsonString);
+      final Movie movie = Movie.fromJson(jsonMap);
+      return movie;
+    } catch (error) {
+      print(error.message);
+    }
+    return null;
+  }
 }
