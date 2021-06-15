@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/widgets/toggle_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -15,6 +17,14 @@ class HomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ToggleWidget(),
+              Container(
+                child: ElevatedButton(
+                  child: Text('TEST API'),
+                  onPressed: () {
+                    Provider.of<Movies>(context, listen: false).testApi();
+                  },
+                ),
+              ),
             ],
           ),
         ));
