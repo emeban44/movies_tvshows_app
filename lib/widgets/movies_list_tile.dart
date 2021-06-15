@@ -4,16 +4,28 @@ import '../models/movie.dart';
 
 class MoviesListTile extends StatelessWidget {
   final Movie movie;
-  MoviesListTile(this.movie);
+  final int index;
+  MoviesListTile(this.movie, this.index);
   @override
   Widget build(BuildContext context) {
+    int position = index + 1;
     return Container(
-      height: 100,
+      height: 90,
       child: ListTile(
         leading: SizedBox(
-          height: 70,
+          height: 85,
           child: Image.network(
-              'https://image.tmdb.org/t/p/w500${movie.posterPath}'),
+            'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+          ),
+        ),
+        title: Text(position.toString() + '. ' + movie.title),
+        subtitle: Text('(' +
+            movie.releaseDate.toString().substring(0, 4) +
+            ')' +
+            ', Total votes: ' +
+            movie.voteCount.toString()),
+        trailing: CircleAvatar(
+          child: Text(movie.voteAverage.toString()),
         ),
       ),
     );
