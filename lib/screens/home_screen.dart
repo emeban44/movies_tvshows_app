@@ -11,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isLoading = false;
+  bool _isDefault = true;
+
+  void _toggleDefault(bool togglingStatus) {
+    setState(() {
+      _isDefault = togglingStatus;
+    });
+  }
 
   @override
   void didChangeDependencies() async {
@@ -41,8 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Flexible(child: ToggleWidget(), flex: 1),
-                    Flexible(child: MoviesListView(), flex: 10),
+                    Flexible(child: ToggleWidget(_toggleDefault), flex: 1),
+                    if (!_isDefault)
+                      Flexible(child: MoviesListView(), flex: 10),
                   ],
                 ),
               ));

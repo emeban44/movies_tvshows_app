@@ -25,8 +25,24 @@ class MoviesListTile extends StatelessWidget {
               ')' +
               ', Total votes: ' +
               movie.voteCount.toString()),
-          trailing: CircleAvatar(
-            child: Text(movie.voteAverage.toString()),
+          trailing: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.blue.shade300,
+                    Colors.blueGrey.shade400,
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(10)),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              child: Text(
+                movie.voteAverage.toString(),
+                style: TextStyle(
+                  color: Colors.grey.shade100,
+                ),
+              ),
+            ),
           ),
         ),
       ),

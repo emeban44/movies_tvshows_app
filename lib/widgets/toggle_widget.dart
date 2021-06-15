@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/widgets/toggle_item.dart';
 
 class ToggleWidget extends StatefulWidget {
+  final Function toggling;
+  ToggleWidget(this.toggling);
   @override
   _ToggleWidgetState createState() => _ToggleWidgetState();
 }
@@ -9,16 +11,17 @@ class ToggleWidget extends StatefulWidget {
 class _ToggleWidgetState extends State<ToggleWidget> {
   final _selection = [false, true];
   void _toggleView(String title) {
-    if (title == 'Movies') {
-      setState(() {
-        _selection[0] = !_selection[0];
-        _selection[1] = !_selection[1];
-      });
-    } else
-      setState(() {
-        _selection[0] = !_selection[0];
-        _selection[1] = !_selection[1];
-      });
+    // if (title == 'Movies') {
+    setState(() {
+      _selection[0] = !_selection[0];
+      _selection[1] = !_selection[1];
+    });
+    widget.toggling(_selection[1]);
+    // } else
+    //   setState(() {
+    //     _selection[0] = !_selection[0];
+    //     _selection[1] = !_selection[1];
+    //   });
   }
 
   @override
@@ -32,11 +35,11 @@ class _ToggleWidgetState extends State<ToggleWidget> {
         children: [
           GestureDetector(
             child: ToggleItem('Movies', _toggleView, _selection[0]),
-            onTap: () => _toggleView('Movies'),
+            onTap: _selection[0] ? null : () => _toggleView('Movies'),
           ),
           GestureDetector(
             child: ToggleItem('TV Shows', _toggleView, _selection[1]),
-            onTap: () => _toggleView('TV Shows'),
+            onTap: _selection[1] ? null : () => _toggleView('TV Shows'),
           ),
         ],
       ),
