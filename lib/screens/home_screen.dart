@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
@@ -15,11 +17,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool _isLoading = false;
   bool _isDefault = true;
+  Timer searchOnStoppedTyping;
 
   void _toggleDefault(bool togglingStatus) {
     setState(() {
       _isDefault = togglingStatus;
     });
+  }
+
+  Future<void> liveSearch(String text) {
+    return null;
+  }
+
+  search(value) {
+    print('hello world from search . the value is $value');
   }
 
   @override
@@ -51,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(child: ToggleWidget(_toggleDefault), flex: 1),
-                  Flexible(child: SearchBox(), flex: 1),
+                  Flexible(child: SearchBox(liveSearch), flex: 1),
                   if (!_isDefault) Flexible(child: MoviesListView(), flex: 10),
                   if (_isDefault) Flexible(child: TvShowsListView(), flex: 10),
                 ],
