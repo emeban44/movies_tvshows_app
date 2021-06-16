@@ -12,7 +12,7 @@ class MoviesListView extends StatelessWidget {
       onRefresh:
           Provider.of<Movies>(context, listen: false).fetchAndSetTopRatedMovies,
       child: Container(
-        margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
+        margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
         child: Consumer<Movies>(
           builder: (ctx, movies, _) {
             final List<Movie> topMovies = movies.getMovies();

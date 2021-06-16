@@ -23,17 +23,22 @@ class MyApp extends StatelessWidget {
           create: (ctx) => TvShows(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomeScreen(),
-        routes: {
-          MovieDetailsScreen.routeName: (ctx) => MovieDetailsScreen(),
-          TvShowDetailsScreen.routeName: (ctx) => TvShowDetailsScreen(),
+      child: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus.unfocus();
         },
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: HomeScreen(),
+          routes: {
+            MovieDetailsScreen.routeName: (ctx) => MovieDetailsScreen(),
+            TvShowDetailsScreen.routeName: (ctx) => TvShowDetailsScreen(),
+          },
+        ),
       ),
     );
   }

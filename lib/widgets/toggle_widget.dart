@@ -11,17 +11,11 @@ class ToggleWidget extends StatefulWidget {
 class _ToggleWidgetState extends State<ToggleWidget> {
   final _selection = [false, true];
   void _toggleView(String title) {
-    // if (title == 'Movies') {
     setState(() {
       _selection[0] = !_selection[0];
       _selection[1] = !_selection[1];
     });
     widget.toggling(_selection[1]);
-    // } else
-    //   setState(() {
-    //     _selection[0] = !_selection[0];
-    //     _selection[1] = !_selection[1];
-    //   });
   }
 
   @override
@@ -29,6 +23,7 @@ class _ToggleWidgetState extends State<ToggleWidget> {
     return Container(
       width: 500,
       height: 50,
+      //  margin: const EdgeInsets.only(top: 5),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

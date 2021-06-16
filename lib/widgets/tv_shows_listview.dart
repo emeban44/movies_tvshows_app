@@ -13,7 +13,7 @@ class TvShowsListView extends StatelessWidget {
       onRefresh:
           Provider.of<TvShows>(context, listen: false).fetchAndSetTopTvShows,
       child: Container(
-        margin: const EdgeInsets.only(top: 15, left: 5, right: 5),
+        margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
         child: Consumer<TvShows>(
           builder: (ctx, tvShows, _) {
             final List<TvShow> topShows = tvShows.getTvShows();
