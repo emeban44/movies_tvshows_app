@@ -35,13 +35,6 @@ class RatingsRow extends StatelessWidget {
               onPressed: null,
             ),
           ),
-          Flexible(
-            flex: 1,
-            child: Text(
-              '#' + (index + 1).toString(),
-              style: TextStyle(fontSize: 22),
-            ),
-          ),
         ],
       ),
     );

@@ -7,6 +7,7 @@ import 'package:movies_tvshows_app/widgets/movies/movies_listview.dart';
 import 'package:movies_tvshows_app/widgets/movies/searched_movies_listview.dart';
 import 'package:movies_tvshows_app/widgets/search_box.dart';
 import 'package:movies_tvshows_app/widgets/toggle_widget.dart';
+import 'package:movies_tvshows_app/widgets/tv_shows/searched_tv_shows_listview.dart';
 import 'package:movies_tvshows_app/widgets/tv_shows/tv_shows_listview.dart';
 import 'package:provider/provider.dart';
 
@@ -31,6 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
       _isLoading = true;
     });
     await Provider.of<Movies>(context, listen: false).fetchSearchedMovies(text);
+    await Provider.of<TvShows>(context, listen: false)
+        .fetchSearchedTvShows(text);
     setState(() {
       _isLoading = false;
       _isDefault = isItDefault;
@@ -87,6 +90,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Flexible(child: TvShowsListView(), flex: 10),
             if (!_isDefault && _isSearching && !_isLoading)
               Flexible(child: SearchedMoviesListView(), flex: 10),
+            if (_isDefault && _isSearching && !_isLoading)
+              Flexible(child: SearchedTvShowsListView(), flex: 10),
           ],
         ),
       ),

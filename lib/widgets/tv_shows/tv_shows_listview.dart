@@ -20,7 +20,7 @@ class TvShowsListView extends StatelessWidget {
             return ListView.builder(
               itemBuilder: (ctx, i) {
                 return InkWell(
-                  child: TvShowListTile(topShows[i], i),
+                  child: TvShowListTile(topShows[i], i, false),
                   onTap: () {
                     Navigator.of(context).pushNamed(
                         TvShowDetailsScreen.routeName,

@@ -4,7 +4,8 @@ import 'package:movies_tvshows_app/models/tv_show.dart';
 class TvShowListTile extends StatelessWidget {
   final TvShow tvShow;
   final int index;
-  TvShowListTile(this.tvShow, this.index);
+  final bool isSearching;
+  TvShowListTile(this.tvShow, this.index, this.isSearching);
   @override
   Widget build(BuildContext context) {
     int position = index + 1;
@@ -18,7 +19,9 @@ class TvShowListTile extends StatelessWidget {
               'https://image.tmdb.org/t/p/w500${tvShow.posterPath}',
             ),
           ),
-          title: Text(position.toString() + '. ' + tvShow.originalName),
+          title: isSearching
+              ? Text(tvShow.originalName)
+              : Text(position.toString() + '. ' + tvShow.originalName),
           subtitle: Text('(' +
               tvShow.firstAirDate.toString().substring(0, 4) +
               ')' +

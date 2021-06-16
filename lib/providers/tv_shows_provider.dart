@@ -3,13 +3,19 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
 import 'package:movies_tvshows_app/models/tv_show.dart';
 
 class TvShows with ChangeNotifier {
   List<TvShow> _tvShows = [];
+  List<TvShow> _searchedTvShows = [];
 
   List<TvShow> getTvShows() {
     return [..._tvShows];
+  }
+
+  List<TvShow> getSearchedTvShows() {
+    return [..._searchedTvShows];
   }
 
   Future<void> fetchAndSetTopTvShows() async {
@@ -33,22 +39,37 @@ class TvShows with ChangeNotifier {
     }
   }
 
-  // Future<Movie> fetchMovieDetails(int id) async {
-  //   final url = Uri.parse(
-  //       'https://api.themoviedb.org/3/movie/$id?api_key=f1a036ef23dc9704fb60a521327ff1c7&language=en-US');
-  //   try {
-  //     final response = await http.get(url);
-  //     if (response.statusCode != 200) {
-  //       print("Error, failed to load movie details");
-  //       throw "Error";
-  //     }
-  //     final jsonString = response.body;
-  //     var jsonMap = json.decode(jsonString);
-  //     final Movie movie = Movie.fromJson(jsonMap);
-  //     return movie;
-  //   } catch (error) {
-  //     print(error.message);
-  //   }
-  //   return null;
-  // }
+  Future<void> fetchSearchedTvShows(String search) async {
+    if (SharedPrefs().getOverTwoCharactersBool) {
+      final url = Uri.parse(
+          'https://api.themoviedb.org/3/search/tv?api_key=f1a036ef23dc9704fb60a521327ff1c7&language=en-US&page=1&query=$search&include_adult=false');
+      List<TvShow> searchedTvShows = [];
+      try {
+        final response = await http.get(url);
+        if (response.statusCode != 200) {
+          print("Error, failed to load movies");
+          throw null;
+        }
+        print('ok');
+        // print(response.body);
+        final jsonString = response.body;
+        var jsonMap = json.decode(jsonString);
+        List<TvShow> searchedTvShowsUnfiltered =
+            TopShows.fromJson(jsonMap).topShows;
+        searchedTvShowsUnfiltered
+            .sort((a, b) => a.voteCount.compareTo(b.voteCount));
+        searchedTvShowsUnfiltered = searchedTvShowsUnfiltered.reversed.toList();
+        for (int i = 0; i < searchedTvShowsUnfiltered.length; i++)
+          if (searchedTvShowsUnfiltered[i].posterPath != null)
+            searchedTvShows.add(searchedTvShowsUnfiltered[i]);
+        // print(searchedMovies);
+      } catch (error) {
+        print('error');
+        print(error);
+      }
+      _searchedTvShows = searchedTvShows;
+      notifyListeners();
+    }
+    // return _searchedMovies;
+  }
 }
