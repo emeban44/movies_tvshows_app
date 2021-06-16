@@ -14,7 +14,6 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     FocusManager.instance.primaryFocus.unfocus();
     final movie = ModalRoute.of(context).settings.arguments as Movie;
-    final index = Provider.of<Movies>(context).getMovies().indexOf(movie);
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title),
@@ -26,7 +25,7 @@ class MovieDetailsScreen extends StatelessWidget {
               'https://image.tmdb.org/t/p/w500${movie.backdropPath}',
             ),
             Overview(movie.overview),
-            RatingsRow(movie, index),
+            RatingsRow(movie.voteCount, movie.voteAverage),
           ],
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './helpers/sharedPrefs.dart';
+import 'helpers/shared_preferences.dart';
 import './providers/movies_provider.dart';
 import './screens/movie_details_screen.dart';
 import './screens/tv_show_details_screen.dart';

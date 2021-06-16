@@ -16,8 +16,11 @@ class SearchedMoviesListView extends StatelessWidget {
           final List<Movie> searchedMovies = movies.getSearchedMovies();
           if (searchedMovies.isEmpty)
             return Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Text('No movie found or the API is missing fields'),
+              margin: const EdgeInsets.only(top: 10, right: 20, left: 20),
+              child: Text(
+                'No movie found or the API has null arguments for this particular search. Try typing the full title.',
+                textAlign: TextAlign.center,
+              ),
             );
           return ListView.builder(
             itemBuilder: (ctx, i) {

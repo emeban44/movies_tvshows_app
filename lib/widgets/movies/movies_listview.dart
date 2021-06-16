@@ -22,6 +22,7 @@ class MoviesListView extends StatelessWidget {
                 return InkWell(
                   child: MoviesListTile(topMovies[i], i, false),
                   onTap: () {
+                    FocusManager.instance.primaryFocus.unfocus();
                     Navigator.of(context).pushNamed(
                         MovieDetailsScreen.routeName,
                         arguments: topMovies[i]);

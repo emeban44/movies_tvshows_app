@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import '../helpers/sharedPrefs.dart';
+import '../helpers/shared_preferences.dart';
 import '../models/tv_show.dart';
 
 class TvShows with ChangeNotifier {
@@ -29,7 +29,7 @@ class TvShows with ChangeNotifier {
         print("Error, failed to load tv shows");
         return "Failed to load tv shows";
       }
-      print('ok');
+      print('tv shows fetched');
       final jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       final List<TvShow> tvShows = TopShows.fromJson(jsonMap).topShows;

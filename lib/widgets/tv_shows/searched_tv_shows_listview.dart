@@ -15,8 +15,11 @@ class SearchedTvShowsListView extends StatelessWidget {
           final List<TvShow> searchedShows = tvShows.getSearchedTvShows();
           if (searchedShows.isEmpty)
             return Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: Text('No TV show found or the API is missing fields'),
+              margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+              child: Text(
+                'No TV show found or the API has null arguments for this particular search. Try typing the full title.',
+                textAlign: TextAlign.center,
+              ),
             );
           return ListView.builder(
             itemBuilder: (ctx, i) {

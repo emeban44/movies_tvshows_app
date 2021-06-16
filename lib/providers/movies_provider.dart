@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import '../helpers/sharedPrefs.dart';
+import '../helpers/shared_preferences.dart';
 import '../models/movie.dart';
 
 class Movies with ChangeNotifier {
@@ -28,7 +28,7 @@ class Movies with ChangeNotifier {
         print("Error, failed to load movies");
         return "Failed to load movies";
       }
-      print('ok');
+      print('movies fetched');
       final jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       final List<Movie> movies = TopMovies.fromJson(jsonMap).movies;
