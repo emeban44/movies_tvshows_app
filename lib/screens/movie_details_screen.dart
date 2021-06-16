@@ -11,6 +11,7 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FocusManager.instance.primaryFocus.unfocus();
     final movie = ModalRoute.of(context).settings.arguments as Movie;
     final index = Provider.of<Movies>(context).getMovies().indexOf(movie);
     return Scaffold(

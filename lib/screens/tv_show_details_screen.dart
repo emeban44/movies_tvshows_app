@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/movie.dart';
 import 'package:movies_tvshows_app/models/tv_show.dart';
-import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
 import 'package:movies_tvshows_app/widgets/backdrop.dart';
 import 'package:movies_tvshows_app/widgets/overview.dart';
@@ -13,6 +11,7 @@ class TvShowDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FocusManager.instance.primaryFocus.unfocus();
     final tvShow = ModalRoute.of(context).settings.arguments as TvShow;
     final index = Provider.of<TvShows>(context).getTvShows().indexOf(tvShow);
     return Scaffold(
