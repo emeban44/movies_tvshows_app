@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
+import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
 import 'package:movies_tvshows_app/widgets/movies_listview.dart';
 import 'package:movies_tvshows_app/widgets/toggle_widget.dart';
+import 'package:movies_tvshows_app/widgets/tv_shows_listview.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,13 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void didChangeDependencies() async {
     setState(() {
       _isLoading = true;
-      print(true);
     });
     await Provider.of<Movies>(context, listen: false)
         .fetchAndSetTopRatedMovies();
+    await Provider.of<TvShows>(context, listen: false).fetchAndSetTopTvShows();
     setState(() {
       _isLoading = false;
-      print(false);
     });
     super.didChangeDependencies();
   }
@@ -51,6 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Flexible(child: ToggleWidget(_toggleDefault), flex: 1),
                     if (!_isDefault)
                       Flexible(child: MoviesListView(), flex: 10),
+                    if (_isDefault)
+                      Flexible(child: TvShowsListView(), flex: 10),
                   ],
                 ),
               ));

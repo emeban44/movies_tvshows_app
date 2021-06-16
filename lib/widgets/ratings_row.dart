@@ -10,9 +10,6 @@ class RatingsRow extends StatelessWidget {
     return Container(
       height: 60,
       padding: const EdgeInsets.all(5),
-      // decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //         colors: [Colors.blue.shade400, Colors.blueGrey.shade700])),
       margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
+import 'package:movies_tvshows_app/screens/tv_show_details_screen.dart';
 import 'package:provider/provider.dart';
 
 import './screens/home_screen.dart';
+import 'providers/tv_shows_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +19,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => Movies(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => TvShows(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
         home: HomeScreen(),
         routes: {
           MovieDetailsScreen.routeName: (ctx) => MovieDetailsScreen(),
+          TvShowDetailsScreen.routeName: (ctx) => TvShowDetailsScreen(),
         },
       ),
     );
