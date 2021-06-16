@@ -37,8 +37,10 @@ class _SearchBoxState extends State<SearchBox> {
   }
 
   search(value) {
-    print('searching...');
-    widget._liveSearch(value, widget._isDefault);
+    if (SharedPrefs().getOverTwoCharactersBool) {
+      print('searching...');
+      widget._liveSearch(value, widget._isDefault);
+    }
   }
 
   @override
