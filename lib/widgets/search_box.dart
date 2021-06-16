@@ -12,7 +12,6 @@ class SearchBox extends StatefulWidget {
 
 class _SearchBoxState extends State<SearchBox> {
   final _searchKey = GlobalKey<FormState>();
-
   Timer searchOnStoppedTyping;
 
   _onChangeHandler(value) {

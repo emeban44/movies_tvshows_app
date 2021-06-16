@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
-import 'package:movies_tvshows_app/widgets/movies_listview.dart';
+import 'package:movies_tvshows_app/widgets/movies/movies_listview.dart';
 import 'package:movies_tvshows_app/widgets/search_box.dart';
 import 'package:movies_tvshows_app/widgets/toggle_widget.dart';
-import 'package:movies_tvshows_app/widgets/tv_shows_listview.dart';
+import 'package:movies_tvshows_app/widgets/tv_shows/tv_shows_listview.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {

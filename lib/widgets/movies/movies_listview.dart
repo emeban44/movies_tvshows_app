@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/models/movie.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
-import 'package:movies_tvshows_app/widgets/movies_list_tile.dart';
+import 'package:movies_tvshows_app/widgets/movies/movies_list_tile.dart';
 import 'package:provider/provider.dart';
 
 class MoviesListView extends StatelessWidget {
