@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
-import 'package:movies_tvshows_app/models/tv_show.dart';
+import '../helpers/sharedPrefs.dart';
+import '../models/tv_show.dart';
 
 class TvShows with ChangeNotifier {
   List<TvShow> _tvShows = [];

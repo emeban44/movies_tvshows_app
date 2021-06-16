@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/widgets/toggle_item.dart';
+
+import '../widgets/toggle_item.dart';
 
 class ToggleWidget extends StatefulWidget {
   final Function toggling;

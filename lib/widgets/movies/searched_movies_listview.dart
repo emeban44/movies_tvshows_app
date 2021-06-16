@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/movie.dart';
-import 'package:movies_tvshows_app/providers/movies_provider.dart';
-import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
-import 'package:movies_tvshows_app/widgets/movies/movies_list_tile.dart';
 import 'package:provider/provider.dart';
+
+import '../../models/movie.dart';
+import '../../providers/movies_provider.dart';
+import '../../screens/movie_details_screen.dart';
+import '../../widgets/movies/movies_list_tile.dart';
 
 class SearchedMoviesListView extends StatelessWidget {
   @override
@@ -13,6 +14,11 @@ class SearchedMoviesListView extends StatelessWidget {
       child: Consumer<Movies>(
         builder: (ctx, movies, _) {
           final List<Movie> searchedMovies = movies.getSearchedMovies();
+          if (searchedMovies.isEmpty)
+            return Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Text('No movie found or the API is missing fields'),
+            );
           return ListView.builder(
             itemBuilder: (ctx, i) {
               return InkWell(

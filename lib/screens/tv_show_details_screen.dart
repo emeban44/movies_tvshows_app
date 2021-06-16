@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/tv_show.dart';
-import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
-import 'package:movies_tvshows_app/widgets/backdrop.dart';
-import 'package:movies_tvshows_app/widgets/overview.dart';
-import 'package:movies_tvshows_app/widgets/ratings_row.dart';
 import 'package:provider/provider.dart';
+
+import '../models/tv_show.dart';
+import '../providers/tv_shows_provider.dart';
+import '../widgets/backdrop.dart';
+import '../widgets/overview.dart';
 
 class TvShowDetailsScreen extends StatelessWidget {
   static const routeName = '/tvShow-details';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/movie.dart';
+
+import '../models/movie.dart';
 
 class RatingsRow extends StatelessWidget {
   final Movie movie;

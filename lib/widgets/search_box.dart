@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
+
+import '../helpers/sharedPrefs.dart';
 
 class SearchBox extends StatefulWidget {
   final Function(String text, bool isItDefault) _liveSearch;

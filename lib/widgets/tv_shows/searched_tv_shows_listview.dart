@@ -13,6 +13,11 @@ class SearchedTvShowsListView extends StatelessWidget {
       child: Consumer<TvShows>(
         builder: (ctx, tvShows, _) {
           final List<TvShow> searchedShows = tvShows.getSearchedTvShows();
+          if (searchedShows.isEmpty)
+            return Container(
+              margin: const EdgeInsets.only(top: 10),
+              child: Text('No TV show found or the API is missing fields'),
+            );
           return ListView.builder(
             itemBuilder: (ctx, i) {
               return InkWell(

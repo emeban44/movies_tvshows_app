@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
-import 'package:movies_tvshows_app/providers/movies_provider.dart';
-import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
-import 'package:movies_tvshows_app/screens/tv_show_details_screen.dart';
 import 'package:provider/provider.dart';
 
+import './helpers/sharedPrefs.dart';
+import './providers/movies_provider.dart';
+import './screens/movie_details_screen.dart';
+import './screens/tv_show_details_screen.dart';
 import './screens/home_screen.dart';
 import 'providers/tv_shows_provider.dart';
 

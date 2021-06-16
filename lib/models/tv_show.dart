@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final tvShow = tvShowFromJson(jsonString);
-
 import 'dart:convert';
 
 TopShows tvShowFromJson(String str) => TopShows.fromJson(json.decode(str));

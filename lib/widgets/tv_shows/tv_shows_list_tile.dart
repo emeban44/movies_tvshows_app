@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/tv_show.dart';
+
+import '../../models/tv_show.dart';
 
 class TvShowListTile extends StatelessWidget {
   final TvShow tvShow;

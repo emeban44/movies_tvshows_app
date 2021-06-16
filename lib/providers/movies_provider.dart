@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
-import 'package:movies_tvshows_app/models/movie.dart';
+import '../helpers/sharedPrefs.dart';
+import '../models/movie.dart';
 
 class Movies with ChangeNotifier {
   List<Movie> _movies = [];

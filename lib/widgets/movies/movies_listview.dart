@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movies_tvshows_app/models/movie.dart';
-import 'package:movies_tvshows_app/providers/movies_provider.dart';
-import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
-import 'package:movies_tvshows_app/widgets/movies/movies_list_tile.dart';
 import 'package:provider/provider.dart';
+
+import '../../models/movie.dart';
+import '../../providers/movies_provider.dart';
+import '../../screens/movie_details_screen.dart';
+import '../../widgets/movies/movies_list_tile.dart';
 
 class MoviesListView extends StatelessWidget {
   @override
