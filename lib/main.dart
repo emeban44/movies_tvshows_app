@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_tvshows_app/helpers/sharedPrefs.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/screens/movie_details_screen.dart';
 import 'package:movies_tvshows_app/screens/tv_show_details_screen.dart';
@@ -7,7 +8,11 @@ import 'package:provider/provider.dart';
 import './screens/home_screen.dart';
 import 'providers/tv_shows_provider.dart';
 
-void main() {
+final sharedPrefs = SharedPrefs();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await sharedPrefs.init();
   runApp(MyApp());
 }
 

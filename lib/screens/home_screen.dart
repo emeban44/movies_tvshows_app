@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_tvshows_app/providers/movies_provider.dart';
 import 'package:movies_tvshows_app/providers/tv_shows_provider.dart';
 import 'package:movies_tvshows_app/widgets/movies/movies_listview.dart';
+import 'package:movies_tvshows_app/widgets/movies/searched_movies_listview.dart';
 import 'package:movies_tvshows_app/widgets/search_box.dart';
 import 'package:movies_tvshows_app/widgets/toggle_widget.dart';
 import 'package:movies_tvshows_app/widgets/tv_shows/tv_shows_listview.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool _isLoading = false;
   bool _isDefault = true;
-  Timer searchOnStoppedTyping;
+  bool _isSearching = false;
 
   void _toggleDefault(bool togglingStatus) {
     setState(() {
@@ -25,12 +26,23 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Future<void> liveSearch(String text) {
-    return null;
+  Future<void> liveSearch(String text, bool isItDefault) async {
+    setState(() {
+      _isLoading = true;
+    });
+    await Provider.of<Movies>(context, listen: false).fetchSearchedMovies(text);
+    setState(() {
+      _isLoading = false;
+      _isDefault = isItDefault;
+      _isSearching = true;
+    });
   }
 
-  search(value) {
-    print('hello world from search . the value is $value');
+  void revert(bool isDefault) {
+    setState(() {
+      _isDefault = isDefault;
+      _isSearching = false;
+    });
   }
 
   @override
@@ -54,20 +66,30 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Movies and TV Shows'),
         backgroundColor: Colors.blue.shade900,
       ),
-      body: _isLoading
+      body:
+          /*_isLoading
           ? Center(child: CircularProgressIndicator())
-          : Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(child: ToggleWidget(_toggleDefault), flex: 1),
-                  Flexible(child: SearchBox(liveSearch), flex: 1),
-                  if (!_isDefault) Flexible(child: MoviesListView(), flex: 10),
-                  if (_isDefault) Flexible(child: TvShowsListView(), flex: 10),
-                ],
-              ),
-            ),
+          :*/
+          Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(child: ToggleWidget(_toggleDefault), flex: 1),
+            Flexible(child: SearchBox(liveSearch, _isDefault, revert), flex: 1),
+            if (_isLoading)
+              Container(
+                  margin: const EdgeInsets.all(40),
+                  child: CircularProgressIndicator()),
+            if (!_isDefault && !_isSearching && !_isLoading)
+              Flexible(child: MoviesListView(), flex: 10),
+            if (_isDefault && !_isSearching && !_isLoading)
+              Flexible(child: TvShowsListView(), flex: 10),
+            if (!_isDefault && _isSearching && !_isLoading)
+              Flexible(child: SearchedMoviesListView(), flex: 10),
+          ],
+        ),
+      ),
       resizeToAvoidBottomInset: false,
     );
   }

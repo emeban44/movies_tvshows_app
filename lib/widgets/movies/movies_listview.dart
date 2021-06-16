@@ -19,7 +19,7 @@ class MoviesListView extends StatelessWidget {
             return ListView.builder(
               itemBuilder: (ctx, i) {
                 return InkWell(
-                  child: MoviesListTile(topMovies[i], i),
+                  child: MoviesListTile(topMovies[i], i, false),
                   onTap: () {
                     Navigator.of(context).pushNamed(
                         MovieDetailsScreen.routeName,

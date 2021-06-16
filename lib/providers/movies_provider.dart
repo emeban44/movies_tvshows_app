@@ -7,9 +7,14 @@ import 'package:movies_tvshows_app/models/movie.dart';
 
 class Movies with ChangeNotifier {
   List<Movie> _movies = [];
+  List<Movie> _searchedMovies = [];
 
   List<Movie> getMovies() {
     return [..._movies];
+  }
+
+  List<Movie> getSearchedMovies() {
+    return [..._searchedMovies];
   }
 
   Future<void> fetchAndSetTopRatedMovies() async {
@@ -49,5 +54,34 @@ class Movies with ChangeNotifier {
       print(error.message);
     }
     return null;
+  }
+
+  Future<void> fetchSearchedMovies(String search) async {
+    final url = Uri.parse(
+        'https://api.themoviedb.org/3/search/movie?api_key=f1a036ef23dc9704fb60a521327ff1c7&language=en-US&query=$search&page=1&include_adult=false');
+    List<Movie> searchedMovies = [];
+    try {
+      final response = await http.get(url);
+      if (response.statusCode != 200) {
+        print("Error, failed to load movies");
+        throw null;
+      }
+      print('ok');
+      final jsonString = response.body;
+      var jsonMap = json.decode(jsonString);
+      List<Movie> searchedMoviesUnfiltered = TopMovies.fromJson(jsonMap).movies;
+      searchedMoviesUnfiltered
+          .sort((a, b) => a.voteCount.compareTo(b.voteCount));
+      searchedMoviesUnfiltered = searchedMoviesUnfiltered.reversed.toList();
+      for (int i = 0; i < searchedMoviesUnfiltered.length; i++)
+        if (searchedMoviesUnfiltered[i].posterPath != null)
+          searchedMovies.add(searchedMoviesUnfiltered[i]);
+      // print(searchedMovies);
+    } catch (error) {
+      print(error);
+    }
+    _searchedMovies = searchedMovies;
+    notifyListeners();
+    // return _searchedMovies;
   }
 }

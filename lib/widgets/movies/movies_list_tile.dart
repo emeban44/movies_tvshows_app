@@ -5,7 +5,8 @@ import '../../models/movie.dart';
 class MoviesListTile extends StatelessWidget {
   final Movie movie;
   final int index;
-  MoviesListTile(this.movie, this.index);
+  final bool isSearching;
+  MoviesListTile(this.movie, this.index, this.isSearching);
   @override
   Widget build(BuildContext context) {
     int position = index + 1;
@@ -19,7 +20,9 @@ class MoviesListTile extends StatelessWidget {
               'https://image.tmdb.org/t/p/w500${movie.posterPath}',
             ),
           ),
-          title: Text(position.toString() + '. ' + movie.title),
+          title: isSearching
+              ? Text(movie.title)
+              : Text(position.toString() + '. ' + movie.title),
           subtitle: Text('(' +
               movie.releaseDate.toString().substring(0, 4) +
               ')' +
