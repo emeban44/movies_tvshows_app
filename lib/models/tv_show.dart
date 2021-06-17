@@ -67,7 +67,8 @@ class TvShow {
   factory TvShow.fromJson(Map<String, dynamic> json) => TvShow(
         backdropPath:
             json["backdrop_path"] == null ? null : json["backdrop_path"],
-        firstAirDate: DateTime.parse(json["first_air_date"]) ?? DateTime.now(),
+        firstAirDate:
+            DateTime.tryParse(json["first_air_date"]) ?? DateTime.now(),
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
         name: json["name"],
