@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../models/movie.dart';
-import '../providers/movies_provider.dart';
 import '../widgets/backdrop.dart';
 import '../widgets/overview.dart';
 import '../widgets/ratings_row.dart';

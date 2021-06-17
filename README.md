@@ -1,16 +1,17 @@
-# movies_tvshows_app
+# Movies and TV Shows App
 
-A new Flutter project.
+The purpose of this application is to keep the user up to date with the top rated movies and tv shows. There is also a search option where the user can search and learn about movies or shows.
 
-## Getting Started
+API used for this application: https://developers.themoviedb.org/3
 
-This project is a starting point for a Flutter application.
+## How to run this application
 
-A few resources to get you started if this is your first Flutter project:
+The app was developed on an iPhone 12 simulator (iOS 14.5) and has also been tested on the Pixel 4 Android emulator.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To be able to compile and run this app, you will need the following:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter version 2.0.5
+- Dart version 3 and higher
+- Visual Studio Code
+- iOS simulator (iPhone 12 recommended)
+- Android emulator (Pixel 4 recommended)

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/movie.dart';
-
 class RatingsRow extends StatelessWidget {
   final int totalVotes;
   final double votesAverage;
