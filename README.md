@@ -15,3 +15,7 @@ To be able to compile and run this app, you will need the following:
 - Visual Studio Code
 - iOS simulator (iPhone 12 recommended)
 - Android emulator (Pixel 4 recommended)
+
+### App video demonstration
+
+https://www.youtube.com/watch?v=JR9DKOTDM14
