@@ -11,7 +11,7 @@ The app was developed on an iPhone 12 simulator (iOS 14.5) and has also been tes
 To be able to compile and run this app, you will need the following:
 
 - Flutter version 2.0.5 or higher
-- Dart version 3 or higher
+- Dart version 2.12.3 or higher
 - Visual Studio Code
 - iOS simulator (iPhone 12 recommended)
 - Android emulator (Pixel 4 recommended)
