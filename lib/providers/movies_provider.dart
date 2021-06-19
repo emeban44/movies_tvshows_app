@@ -32,7 +32,10 @@ class Movies with ChangeNotifier {
       final jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       final List<Movie> movies = TopMovies.fromJson(jsonMap).movies;
-      for (int i = 0; i < 10; i++) _movies.add(movies[i]);
+      final List<Movie> listToReturn = [];
+      for (int i = 0; i < 10; i++) listToReturn.add(movies[i]);
+      _movies = listToReturn;
+      notifyListeners();
     } catch (error) {
       print(error);
     }
@@ -85,7 +88,7 @@ class Movies with ChangeNotifier {
         print('error');
         print(error);
       }
-      _searchedMovies = searchedMovies;
+      _searchedMovies = [...searchedMovies];
       notifyListeners();
     }
     // return _searchedMovies;

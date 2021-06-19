@@ -33,7 +33,10 @@ class TvShows with ChangeNotifier {
       final jsonString = response.body;
       var jsonMap = json.decode(jsonString);
       final List<TvShow> tvShows = TopShows.fromJson(jsonMap).topShows;
-      for (int i = 1; i < 11; i++) _tvShows.add(tvShows[i]);
+      final List<TvShow> listToReturn = [];
+      for (int i = 1; i < 11; i++) listToReturn.add(tvShows[i]);
+      _tvShows = listToReturn;
+      notifyListeners();
     } catch (error) {
       print(error);
     }
